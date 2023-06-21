@@ -4,7 +4,7 @@
     <p class="mb-3">
       <strong>${{ hourlyRate }}/h</strong>
     </p>
-    <ul class="flex flex-wrap gap-x-5 gap-y-2 mb-4">
+    <ul class="badges-list">
       <app-badge v-for="area in areas" :key="area" :mode="area">
         {{ area }}
       </app-badge>
