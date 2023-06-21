@@ -7,12 +7,12 @@
         </h1>
         <ul class="flex gap-8">
           <li class="nav-link">
-            <router-link to="/coaches" class="router-link"
+            <router-link to="/coaches" class="link-hover"
               >All coaches</router-link
             >
           </li>
           <li class="nav-link">
-            <router-link to="/requests" class="router-link"
+            <router-link to="/requests" class="link-hover"
               >Requests</router-link
             >
           </li>
@@ -23,16 +23,7 @@
 </template>
 
 <style scoped>
-.router-link {
-  color: #929292;
-  transition: 0.3s;
-}
-
-.router-link:hover {
-  color: #f43f5e;
-}
-
-.router-link.router-link-active {
+.router-link-active {
   color: #f9fafb;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <section>Filter</section>
   <section>
-    <div>
+    <div class="mt-4 mb-12">
       <button>Refresh</button>
       <router-link to="/register">Register as Coach</router-link>
     </div>
-    <ul v-if="hasCoaches">
+    <ul v-if="hasCoaches" class="grid gap-8">
       <app-coach-item
         v-for="coach in coaches.getCoaches"
         :key="coach.id"

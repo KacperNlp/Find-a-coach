@@ -6,4 +6,8 @@
   .nav-link {
     @apply text-sm md:text-base
   }
+
+  .link-hover {
+    @apply text-slate-400 hover:text-rose-500 duration-200
+  }
 }
