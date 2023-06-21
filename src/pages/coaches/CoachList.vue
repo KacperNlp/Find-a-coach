@@ -3,8 +3,8 @@
   <section>
     <app-card>
       <div class="flex justify-between mt-4 mb-12">
-        <button>Refresh</button>
-        <router-link to="/register">Register as Coach</router-link>
+        <app-button type="btn-outline">Refresh</app-button>
+        <app-button is-link to="/register">Register as Coach</app-button>
       </div>
       <ul v-if="hasCoaches" class="grid gap-8">
         <app-coach-item

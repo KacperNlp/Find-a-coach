@@ -9,9 +9,11 @@
         {{ area }}
       </app-badge>
     </ul>
-    <div class="flex gap-4">
-      <router-link :to="getContactUrl" class="link-hover">Contact</router-link>
-      <router-link :to="getDetailsUrl" class="link-hover">Details</router-link>
+    <div class="flex justify-end gap-4">
+      <app-button is-link :to="getContactUrl" type="btn-outline"
+        >Contact</app-button
+      >
+      <app-button is-link :to="getDetailsUrl">Details</app-button>
     </div>
   </li>
 </template>

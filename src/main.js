@@ -4,6 +4,7 @@ import router from "./router";
 
 //components
 import AppBadge from "./components/UI/AppBadge.vue";
+import AppButton from "./components/UI/AppButton.vue";
 import AppCard from "./components/UI/AppCard.vue";
 import AppContainer from "./components/UI/AppContainer.vue";
 
@@ -14,9 +15,10 @@ const pinia = createPinia();
 const app = createApp(App);
 
 app
-  .component("AppContainer", AppContainer)
+  .component("AppBadge", AppBadge)
+  .component("AppButton", AppButton)
   .component("AppCard", AppCard)
-  .component("AppBadge", AppBadge);
+  .component("AppContainer", AppContainer);
 
 app.use(pinia);
 app.use(router);
