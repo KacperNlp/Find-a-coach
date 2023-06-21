@@ -6,9 +6,16 @@
       <router-link to="/register">Register as Coach</router-link>
     </div>
     <ul v-if="hasCoaches">
-      <li v-for="coach in coaches.getCoaches" :key="coach.id">
-        {{ coach.firstName }}
-      </li>
+      <app-coach-item
+        v-for="coach in coaches.getCoaches"
+        :key="coach.id"
+        :first-name="coach.firstName"
+        :last-name="coach.lastName"
+        :id="coach.id"
+        :hourly-rate="coach.hourlyRate"
+        :areas="coach.areas"
+      >
+      </app-coach-item>
     </ul>
     <div v-else><p>Sorry, we cannot find any coach! :/</p></div>
   </section>
@@ -17,6 +24,9 @@
 <script setup>
 import { useCoachesStore } from "../../store/coaches/index";
 import { computed } from "vue";
+
+//components
+import AppCoachItem from "../../components/coaches/AppCoachItem.vue";
 
 const coaches = useCoachesStore();
 
