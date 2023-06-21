@@ -1,23 +1,25 @@
 <template>
   <section>Filter</section>
   <section>
-    <div class="mt-4 mb-12">
-      <button>Refresh</button>
-      <router-link to="/register">Register as Coach</router-link>
-    </div>
-    <ul v-if="hasCoaches" class="grid gap-8">
-      <app-coach-item
-        v-for="coach in coaches.getCoaches"
-        :key="coach.id"
-        :first-name="coach.firstName"
-        :last-name="coach.lastName"
-        :id="coach.id"
-        :hourly-rate="coach.hourlyRate"
-        :areas="coach.areas"
-      >
-      </app-coach-item>
-    </ul>
-    <div v-else><p>Sorry, we cannot find any coach! :/</p></div>
+    <app-card>
+      <div class="flex justify-between mt-4 mb-12">
+        <button>Refresh</button>
+        <router-link to="/register">Register as Coach</router-link>
+      </div>
+      <ul v-if="hasCoaches" class="grid gap-8">
+        <app-coach-item
+          v-for="coach in coaches.getCoaches"
+          :key="coach.id"
+          :first-name="coach.firstName"
+          :last-name="coach.lastName"
+          :id="coach.id"
+          :hourly-rate="coach.hourlyRate"
+          :areas="coach.areas"
+        >
+        </app-coach-item>
+      </ul>
+      <div v-else><p>Sorry, we cannot find any coach! :/</p></div>
+    </app-card>
   </section>
 </template>
 

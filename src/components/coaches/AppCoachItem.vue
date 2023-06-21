@@ -4,11 +4,11 @@
     <p class="mb-3">
       <strong>${{ hourlyRate }}/h</strong>
     </p>
-    <ul class="flex gap-5 mb-4">
+    <ul class="flex flex-wrap gap-x-5 gap-y-2 mb-4">
       <li
         v-for="area in areas"
         :key="area"
-        class="p-2 bg-rose-600 rounded-xl cursor-default"
+        class="py-2 px-4 bg-rose-600 rounded-xl cursor-default text-sm"
       >
         {{ area }}
       </li>
