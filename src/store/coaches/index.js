@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 
 export const useCoachesStore = defineStore("coaches", () => {
-  const coaches = reactive([
+  const coaches = [
     {
       id: "c1",
       firstName: "Max",
@@ -21,7 +21,7 @@ export const useCoachesStore = defineStore("coaches", () => {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati architecto repudiandae fugit nam voluptates exercitationem eos ipsum laudantium autem nesciunt delectus animi est velit, a modi voluptatum rem eveniet enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic nobis sint fuga fugit magni, quidem reprehenderit, obcaecati architecto eius atque ducimus eveniet quo sunt quae!",
       hourlyRate: 25,
     },
-  ]);
+  ];
 
   let filters = ref([
     { text: "Frontend", id: "frontend", checked: true },
