@@ -39,7 +39,6 @@ export const useCoachesStore = defineStore("coaches", () => {
 
     return filteredCoaches;
   });
-  const hasCoaches = computed(() => coaches && coaches.length > 0);
   const getFilters = computed(() => filters.value);
 
   function updateFilters(updatedFilters) {
@@ -50,7 +49,6 @@ export const useCoachesStore = defineStore("coaches", () => {
     coaches,
     filters,
     getCoaches,
-    hasCoaches,
     getFilters,
     updateFilters,
   };

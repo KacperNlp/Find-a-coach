@@ -22,7 +22,9 @@
         >
         </app-coach-item>
       </ul>
-      <div v-else><p>Sorry, we cannot find any coach! :/</p></div>
+      <div v-else class="flex justify-center">
+        <p class="py-8 font-semibold">Sorry, we cannot find any coach! :/</p>
+      </div>
     </app-card>
   </section>
 </template>
@@ -37,7 +39,7 @@ import AppCoachItem from "../../components/coaches/AppCoachItem.vue";
 
 const coaches = useCoachesStore();
 
-const hasCoaches = computed(() => coaches.hasCoaches);
+const hasCoaches = computed(() => coaches.getCoaches.length > 0);
 const coachesList = computed(() => {
   return coaches.getCoaches;
 });
