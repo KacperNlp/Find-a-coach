@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive, computed } from "vue";
+import { ref, reactive, computed } from "vue";
 
 export const useCoachesStore = defineStore("coaches", () => {
   const coaches = reactive([
@@ -23,8 +23,35 @@ export const useCoachesStore = defineStore("coaches", () => {
     },
   ]);
 
-  const getCoaches = computed(() => coaches);
-  const hasCoaches = computed(() => coaches && coaches.length > 0);
+  let filters = ref([
+    { text: "Frontend", id: "frontend", checked: true },
+    { text: "Backend", id: "backend", checked: true },
+    { text: "Career", id: "career", checked: true },
+  ]);
 
-  return { coaches, getCoaches, hasCoaches };
+  const getCoaches = computed(() => {
+    const filteredCoaches = [...coaches].filter((coach) => {
+      for (const filter of filters.value) {
+        if (coach.areas.includes(filter.id) && filter.checked) return true;
+      }
+      return false;
+    });
+
+    return filteredCoaches;
+  });
+  const hasCoaches = computed(() => coaches && coaches.length > 0);
+  const getFilters = computed(() => filters.value);
+
+  function updateFilters(updatedFilters) {
+    filters.value = updatedFilters;
+  }
+
+  return {
+    coaches,
+    filters,
+    getCoaches,
+    hasCoaches,
+    getFilters,
+    updateFilters,
+  };
 });

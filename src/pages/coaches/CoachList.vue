@@ -1,5 +1,9 @@
 <template>
-  <section>Filter</section>
+  <section class="mb-12">
+    <app-card>
+      <app-coach-filter></app-coach-filter>
+    </app-card>
+  </section>
   <section>
     <app-card>
       <div class="flex justify-between mt-4 mb-12">
@@ -8,7 +12,7 @@
       </div>
       <ul v-if="hasCoaches" class="grid gap-8">
         <app-coach-item
-          v-for="coach in coaches.getCoaches"
+          v-for="coach in coachesList"
           :key="coach.id"
           :first-name="coach.firstName"
           :last-name="coach.lastName"
@@ -28,9 +32,13 @@ import { useCoachesStore } from "../../store/coaches/index";
 import { computed } from "vue";
 
 //components
+import AppCoachFilter from "../../components/coaches/AppCoachFilter.vue";
 import AppCoachItem from "../../components/coaches/AppCoachItem.vue";
 
 const coaches = useCoachesStore();
 
 const hasCoaches = computed(() => coaches.hasCoaches);
+const coachesList = computed(() => {
+  return coaches.getCoaches;
+});
 </script>
