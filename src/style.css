@@ -22,4 +22,12 @@
   .badges-list {
     @apply flex flex-wrap gap-x-5 gap-y-2 mb-4
   }
+
+  .form-input-container {
+    @apply flex flex-col gap-2 mb-4 md:mb-8
+  }
+
+  .form-input {
+    @apply text-gray-100 bg-slate-800 px-4 py-2 text-sm outline-slate-400 border-none
+  }
 }

@@ -1,6 +1,6 @@
 <template>
-  <ul>
-    <li v-for="area in areasList">
+  <ul class="flex flex-col gap-4">
+    <li v-for="area in areasList" class="flex gap-2 text-sm">
       <input
         type="checkbox"
         :id="area.value"

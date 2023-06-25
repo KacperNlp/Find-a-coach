@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 mb-4">
+  <div class="form-input-container">
     <label :for="inputId">{{ labelText }}</label>
     <input
       :name="inputId"
@@ -7,7 +7,7 @@
       :value="modelValue"
       @input="onChange"
       type="text"
-      class="text-gray-600"
+      class="form-input"
     />
   </div>
 </template>
