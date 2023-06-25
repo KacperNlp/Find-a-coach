@@ -29,7 +29,10 @@
       ></textarea>
     </div>
     <div class="form-input-container">
-      <label for="rate">Your horuly rate (in dollars $):</label>
+      <label for="rate">Your horuly rate in dollars $:</label>
+      <strong v-if="isFree" class="text-xs uppercase text-rose-400"
+        >Right now you don't take any money for you work, are you sure!</strong
+      >
       <input
         type="number"
         name="rate"
@@ -52,7 +55,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useCoachesStore } from "../../store/coaches/index";
 
 import AppFormAreas from "./AppFormAreas.vue";
 import AppFormInput from "./AppFormInput.vue";
@@ -73,6 +77,8 @@ const AREAS_LIST = [
 ];
 const MAX_ID_NUMBER = 99999999;
 
+const coaches = useCoachesStore();
+
 const firstName = ref("");
 const lastName = ref("");
 const description = ref("");
@@ -84,19 +90,24 @@ const isLastNameNotValid = ref(false);
 const isDesciptionNotValid = ref(false);
 const isAreasNotValid = ref(false);
 
+const isFree = computed(() => !hourRate.value);
+
 const onSubmitForm = () => {
-  const idOfNewCoach = Math.floor(Math.random() * MAX_ID_NUMBER);
+  const idOfNewCoach = `c${Math.floor(Math.random() * MAX_ID_NUMBER)}`;
+  const areasArray = [...areas.value];
+
   const newCoach = {
     id: idOfNewCoach,
     firstName: firstName.value,
     lastName: lastName.value,
-    areas: areas.value,
+    areas: areasArray,
     description: description.value,
     hourlyRate: hourRate.value,
   };
 
   if (isFormValid(newCoach)) {
     resetAllFormValue();
+    coaches.createNewCoach(newCoach);
   }
 };
 
