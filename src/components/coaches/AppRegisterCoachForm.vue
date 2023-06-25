@@ -57,6 +57,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useCoachesStore } from "../../store/coaches/index";
+import { useRouter } from "vue-router";
 
 import AppFormAreas from "./AppFormAreas.vue";
 import AppFormInput from "./AppFormInput.vue";
@@ -78,6 +79,7 @@ const AREAS_LIST = [
 const MAX_ID_NUMBER = 99999999;
 
 const coaches = useCoachesStore();
+const router = useRouter();
 
 const firstName = ref("");
 const lastName = ref("");
@@ -108,6 +110,7 @@ const onSubmitForm = () => {
   if (isFormValid(newCoach)) {
     resetAllFormValue();
     coaches.createNewCoach(newCoach);
+    redirectToCoachesPage();
   }
 };
 
@@ -140,5 +143,9 @@ const resetAllFormValue = () => {
   description.value = "";
   hourRate.value = 0;
   areas.value.length = 0;
+};
+
+const redirectToCoachesPage = () => {
+  router.push("/coaches");
 };
 </script>
