@@ -1,6 +1,7 @@
 <template>
   <div class="form-input-container">
     <label :for="inputId">{{ labelText }}</label>
+    <app-form-validation v-if="isNotValid">{{ errorText }}</app-form-validation>
     <input
       :name="inputId"
       :id="inputId"
@@ -17,6 +18,8 @@ const props = defineProps({
   labelText: String,
   inputId: String,
   modelValue: String,
+  errorText: String,
+  isNotValid: Boolean,
 });
 
 const emit = defineEmits(["update:modelValue"]);
