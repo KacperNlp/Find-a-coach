@@ -3,10 +3,12 @@
     <app-form-input
       label-text="First name:"
       input-id="firstName"
+      v-model="firstName"
     ></app-form-input>
     <app-form-input
       label-text="Last name:"
       input-id="lastName"
+      v-model="lastName"
     ></app-form-input>
     <div>
       <label for="description">Please tell somethign about you:</label>
@@ -23,7 +25,7 @@
       <input type="number" name="rate" id="rate" v-model.number="hourRate" />
     </div>
     <div>
-      <app-form-areas :areas-list="AREAS_LIST"></app-form-areas>
+      <app-form-areas :areas-list="AREAS_LIST" v-model="areas"></app-form-areas>
     </div>
     <app-button>Submit</app-button>
   </form>
@@ -58,5 +60,9 @@ const areas = ref([]);
 
 const onSubmitForm = () => {
   console.log(firstName.value);
+  console.log(lastName.value);
+  console.log(hourRate.value);
+  console.log(description.value);
+  console.log(areas.value);
 };
 </script>
