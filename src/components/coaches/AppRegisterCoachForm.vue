@@ -146,6 +146,6 @@ const resetAllFormValue = () => {
 };
 
 const redirectToCoachesPage = () => {
-  router.push("/coaches");
+  router.replace("/coaches");
 };
 </script>
