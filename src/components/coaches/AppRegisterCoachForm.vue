@@ -76,7 +76,6 @@ const AREAS_LIST = [
     label: "IT Rectuiter (Career)",
   },
 ];
-const MAX_ID_NUMBER = 99999999;
 
 const coaches = useCoachesStore();
 const router = useRouter();
@@ -95,7 +94,7 @@ const isAreasNotValid = ref(false);
 const isFree = computed(() => !hourRate.value);
 
 const onSubmitForm = () => {
-  const idOfNewCoach = `c${Math.floor(Math.random() * MAX_ID_NUMBER)}`;
+  const idOfNewCoach = coaches.getCurrentUserId;
   const areasArray = [...areas.value];
 
   const newCoach = {

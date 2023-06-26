@@ -22,12 +22,12 @@ export const useCoachesStore = defineStore("coaches", () => {
       hourlyRate: 25,
     },
   ]);
-
   let filters = ref([
     { text: "Frontend", id: "frontend", checked: true },
     { text: "Backend", id: "backend", checked: true },
     { text: "Career", id: "career", checked: true },
   ]);
+  const userId = ref("c3");
 
   const getCoaches = computed(() => {
     const filteredCoaches = [...coaches.value].filter((coach) => {
@@ -40,6 +40,10 @@ export const useCoachesStore = defineStore("coaches", () => {
     return filteredCoaches;
   });
   const getFilters = computed(() => filters.value);
+  const getCurrentUserId = computed(() => userId.value);
+  const isRegisteredAsCoach = computed(() => {
+    return coaches.value.some((coach) => coach.id === userId.value);
+  });
 
   function updateFilters(updatedFilters) {
     filters.value = updatedFilters;
@@ -54,8 +58,11 @@ export const useCoachesStore = defineStore("coaches", () => {
   return {
     coaches,
     filters,
+    userId,
     getCoaches,
     getFilters,
+    getCurrentUserId,
+    isRegisteredAsCoach,
     updateFilters,
     createNewCoach,
   };

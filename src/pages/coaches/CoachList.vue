@@ -8,7 +8,9 @@
     <app-card>
       <div class="flex justify-between mt-4 mb-12">
         <app-button type="btn-outline">Refresh</app-button>
-        <app-button is-link to="/register">Register as Coach</app-button>
+        <app-button v-if="!isRegisteredAsCoach" is-link to="/register"
+          >Register as Coach</app-button
+        >
       </div>
       <ul v-if="hasCoaches" class="grid gap-8">
         <app-coach-item
@@ -43,4 +45,5 @@ const hasCoaches = computed(() => coaches.getCoaches.length > 0);
 const coachesList = computed(() => {
   return coaches.getCoaches;
 });
+const isRegisteredAsCoach = computed(() => coaches.isRegisteredAsCoach);
 </script>
