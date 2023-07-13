@@ -19,6 +19,9 @@
       >Close Contact</app-button
     >
     <app-button v-else is-link :to="contactLink">Contact</app-button>
+  </app-card>
+
+  <app-card v-if="isContactVisible" class="mt-12 lg:mt-16">
     <router-view></router-view>
   </app-card>
 </template>
