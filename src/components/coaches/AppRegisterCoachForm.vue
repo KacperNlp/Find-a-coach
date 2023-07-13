@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useCoachesStore } from "../../store/coaches/index";
 import { useRouter } from "vue-router";
 
@@ -92,6 +92,31 @@ const isDesciptionNotValid = ref(false);
 const isAreasNotValid = ref(false);
 
 const isFree = computed(() => !hourRate.value);
+
+//switch valid value when user type something
+watch(firstName, (newValue, __) => {
+  if (isFirtNameNotValid.value && newValue.length > 0) {
+    isFirtNameNotValid.value = false;
+  }
+});
+
+watch(lastName, (newValue, __) => {
+  if (isLastNameNotValid.value && newValue.length > 0) {
+    isLastNameNotValid.value = false;
+  }
+});
+
+watch(description, (newValue, __) => {
+  if (isDesciptionNotValid.value && newValue.length > 0) {
+    isDesciptionNotValid.value = false;
+  }
+});
+
+watch(areas, (newValue, __) => {
+  if (isAreasNotValid.value && newValue.length > 0) {
+    isAreasNotValid.value = false;
+  }
+});
 
 const onSubmitForm = () => {
   const idOfNewCoach = coaches.getCurrentUserId;

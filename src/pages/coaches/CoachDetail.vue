@@ -15,7 +15,10 @@
         }}</app-badge>
       </ul>
     </div>
-    <app-button is-link :to="contactLink">Contact</app-button>
+    <app-button v-if="isContactVisible" is-link :to="userLink"
+      >Close Contact</app-button
+    >
+    <app-button v-else is-link :to="contactLink">Contact</app-button>
     <router-view></router-view>
   </app-card>
 </template>
@@ -40,4 +43,12 @@ const hourlyRate = computed(() => coach.hourlyRate);
 const description = computed(() => coach.description);
 const areas = computed(() => coach.areas);
 const contactLink = computed(() => `${router.path}/contact`);
+const userLink = computed(() => `/coaches/${props.id}`);
+
+const isContactVisible = computed(() => {
+  const urlParts = router.path.split("/");
+  const lastElementOfUrl = urlParts.pop(-1);
+
+  return lastElementOfUrl === "contact";
+});
 </script>
