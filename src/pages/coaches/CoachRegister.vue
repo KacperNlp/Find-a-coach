@@ -1,5 +1,5 @@
 <template>
-  <app-card class="max-w-2xl mx-auto">
+  <app-card class="smaller-card">
     <h2 class="mb-8 md:mb-12 text-base md:text-xl font-semibold text-center">
       Register as Coach!
     </h2>

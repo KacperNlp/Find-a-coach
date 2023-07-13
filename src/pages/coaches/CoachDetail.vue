@@ -21,7 +21,7 @@
     <app-button v-else is-link :to="contactLink">Contact</app-button>
   </app-card>
 
-  <app-card v-if="isContactVisible" class="mt-12 lg:mt-16">
+  <app-card v-if="isContactVisible" class="mt-12 lg:mt-16 mb-24 smaller-card">
     <router-view></router-view>
   </app-card>
 </template>

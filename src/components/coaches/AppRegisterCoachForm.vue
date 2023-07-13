@@ -50,7 +50,7 @@
       >
       <app-form-areas :areas-list="AREAS_LIST" v-model="areas"></app-form-areas>
     </div>
-    <app-button>Submit</app-button>
+    <app-button class="center-btn">Submit</app-button>
   </form>
 </template>
 
