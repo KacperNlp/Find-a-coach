@@ -7,6 +7,7 @@
         <app-message-part
           :message="req.message"
           text-above-message="Question to you:"
+          class="mb-8"
         ></app-message-part>
         <app-message-part
           v-if="isAnswearGiven(req.answear)"

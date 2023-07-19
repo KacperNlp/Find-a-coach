@@ -5,17 +5,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { defineProps } from "vue";
 
 defineProps({
-  textAboveMessage: {
-    type: String,
-    required: true,
-  },
-  message: {
-    type: String,
-    required: true,
-  },
+  textAboveMessage: String,
+  message: String,
 });
 </script>
