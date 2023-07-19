@@ -68,8 +68,12 @@ import { ref, computed, watch } from "vue";
 import { useCoachesStore } from "../../store/coaches/index";
 import { useRouter } from "vue-router";
 
+//components
 import AppFormAreas from "./AppFormAreas.vue";
 import AppFormInput from "./AppFormInput.vue";
+
+//hooks
+import { useRedirect } from "../../hooks/useRedirect.js";
 
 const AREAS_LIST = [
   {
@@ -87,7 +91,7 @@ const AREAS_LIST = [
 ];
 
 const coaches = useCoachesStore();
-const router = useRouter();
+const { redirectToCoachesPage } = useRedirect();
 
 const firstName = ref("");
 const lastName = ref("");
@@ -193,9 +197,5 @@ const resetAllFormValue = () => {
   description.value = "";
   hourRate.value = 0;
   areas.value.length = 0;
-};
-
-const redirectToCoachesPage = () => {
-  router.replace("/coaches");
 };
 </script>

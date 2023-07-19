@@ -21,7 +21,16 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { useCoachesStore } from "../../store/coaches/index";
+
+//components
 import AppFormInput from "./AppFormInput.vue";
+
+//hooks
+import { useRedirect } from "../../hooks/useRedirect.js";
+
+const coaches = useCoachesStore();
+const { redirectToCoachesPage } = useRedirect();
 
 const firstName = ref("");
 const password = ref("");
@@ -42,8 +51,8 @@ watch(password, (newValue, __) => {
 
 const onSubmitForm = () => {
   if (isFormValid(firstName.value, password.value)) {
-    console.log("Valid pass");
-    return;
+    coaches.loginUser(firstName.value, password.value);
+    redirectToCoachesPage();
   }
 
   console.log("Valid not pass!");

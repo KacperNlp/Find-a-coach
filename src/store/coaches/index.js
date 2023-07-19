@@ -57,6 +57,17 @@ export const useCoachesStore = defineStore("coaches", () => {
     coaches.value = newArrayWithCoaches;
   }
 
+  function loginUser(firstName, password) {
+    const isCoachExist = coaches.value.find(
+      (coach) => coach.firstName === firstName && coach.password === password
+    );
+
+    if (!!isCoachExist) {
+      userId.value = isCoachExist.id;
+      return;
+    }
+  }
+
   function logoutUser() {
     userId.value = null;
   }
@@ -70,6 +81,7 @@ export const useCoachesStore = defineStore("coaches", () => {
     getFilters,
     updateFilters,
     createNewCoach,
+    loginUser,
     logoutUser,
   };
 });
