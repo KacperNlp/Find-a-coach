@@ -31,7 +31,7 @@ import { reactive, defineProps, computed, onBeforeMount } from "vue";
 import { useCoachesStore } from "../../store/coaches";
 import { useRoute } from "vue-router";
 
-const router = useRoute();
+const route = useRoute();
 const coaches = useCoachesStore();
 
 const props = defineProps(["id"]);
@@ -45,11 +45,11 @@ const fullName = computed(() => `${coach.firstName} ${coach.lastName}`);
 const hourlyRate = computed(() => coach.hourlyRate);
 const description = computed(() => coach.description);
 const areas = computed(() => coach.areas);
-const contactLink = computed(() => `${router.path}/contact`);
+const contactLink = computed(() => `${route.path}/contact`);
 const userLink = computed(() => `/coaches/${props.id}`);
 
 const isContactVisible = computed(() => {
-  const urlParts = router.path.split("/");
+  const urlParts = route.path.split("/");
   const lastElementOfUrl = urlParts.pop(-1);
 
   return lastElementOfUrl === "contact";

@@ -27,8 +27,15 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRequestsStore } from "../../store/requests/index";
+import { useRouter, useRoute } from "vue-router";
+
 import AppFormInput from "../../components/coaches/AppFormInput.vue";
+
+const router = useRouter();
+const route = useRoute();
+const requestsStore = useRequestsStore();
 
 const userEmail = ref("");
 const message = ref("");
@@ -36,12 +43,32 @@ const message = ref("");
 const isEmailNotValid = ref(false);
 const isMessageNotValid = ref(false);
 
+watch(userEmail, (newValue, __) => {
+  if (isEmailNotValid.value && newValue.length > 0) {
+    isEmailNotValid.value = false;
+  }
+});
+
+watch(message, (newValue, __) => {
+  if (isMessageNotValid.value && newValue.length > 0) {
+    isMessageNotValid.value = false;
+  }
+});
+
 const onFormSubmit = () => {
-  if (checkEmailValidation() && checkMessageValidation()) {
+  if (checkEmailValidation() || checkMessageValidation()) {
     return;
   }
 
-  console.log("submit");
+  const request = {
+    email: userEmail.value,
+    message: message.value,
+    id: newId(),
+    coachId: route.params.id,
+  };
+
+  requestsStore.addNewRequest(request);
+  router.replace("/coaches");
 };
 
 const checkEmailValidation = () => {
@@ -66,5 +93,9 @@ const checkMessageValidation = () => {
 
   isMessageNotValid.value = true;
   return true;
+};
+
+const newId = () => {
+  return (Date.now() + Math.random()).toFixed();
 };
 </script>

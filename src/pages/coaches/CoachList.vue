@@ -8,9 +8,19 @@
     <app-card>
       <div class="flex justify-between mt-4 mb-12">
         <app-button type="btn-outline">Refresh</app-button>
-        <app-button v-if="!isRegisteredAsCoach" is-link to="/register"
-          >Register as Coach</app-button
-        >
+        <div>
+          <app-button
+            v-if="!isRegisteredAsCoach"
+            is-link
+            to="/login"
+            type="btn-outline"
+            class="mr-2"
+            >Login as Coach</app-button
+          >
+          <app-button v-if="!isRegisteredAsCoach" is-link to="/register"
+            >Register as Coach</app-button
+          >
+        </div>
       </div>
       <ul v-if="hasCoaches" class="grid gap-8">
         <app-coach-item

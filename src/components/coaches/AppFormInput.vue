@@ -6,8 +6,8 @@
       :name="inputId"
       :id="inputId"
       :value="modelValue"
+      :type="inputType"
       @input="onChange"
-      type="text"
       class="form-input"
     />
   </div>
@@ -20,6 +20,11 @@ const props = defineProps({
   modelValue: String,
   errorText: String,
   isNotValid: Boolean,
+  inputType: {
+    type: String,
+    required: false,
+    default: "text",
+  },
 });
 
 const emit = defineEmits(["update:modelValue"]);
