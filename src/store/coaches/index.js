@@ -62,10 +62,12 @@ export const useCoachesStore = defineStore("coaches", () => {
       (coach) => coach.firstName === firstName && coach.password === password
     );
 
-    if (!!isCoachExist) {
-      userId.value = isCoachExist.id;
-      return;
+    if (!isCoachExist) {
+      return false;
     }
+
+    userId.value = isCoachExist.id;
+    return true;
   }
 
   function logoutUser() {

@@ -66,7 +66,6 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useCoachesStore } from "../../store/coaches/index";
-import { useRouter } from "vue-router";
 
 //components
 import AppFormAreas from "./AppFormAreas.vue";

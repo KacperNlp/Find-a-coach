@@ -1,5 +1,10 @@
 <template>
   <form @submit.prevent="onSubmitForm">
+    <app-form-validation
+      v-if="isFirstNameOrPasswordIncorrect"
+      class="mb-4 text-center"
+      >Name or password is incorrect!</app-form-validation
+    >
     <app-form-input
       v-model="firstName"
       label-text="First name:"
@@ -36,6 +41,7 @@ const firstName = ref("");
 const password = ref("");
 const isFirtNameNotValid = ref(false);
 const isPasswordNotValid = ref(false);
+const isFirstNameOrPasswordIncorrect = ref(false);
 
 watch(firstName, (newValue, __) => {
   if (isFirtNameNotValid.value && newValue.length > 0) {
@@ -51,11 +57,17 @@ watch(password, (newValue, __) => {
 
 const onSubmitForm = () => {
   if (isFormValid(firstName.value, password.value)) {
-    coaches.loginUser(firstName.value, password.value);
-    redirectToCoachesPage();
-  }
+    const isNameAndPasswordCorrect = coaches.loginUser(
+      firstName.value,
+      password.value
+    );
 
-  console.log("Valid not pass!");
+    if (isNameAndPasswordCorrect) {
+      redirectToCoachesPage();
+    } else {
+      isFirstNameOrPasswordIncorrect.value = true;
+    }
+  }
 };
 
 const isFormValid = (firstName, password) => {
