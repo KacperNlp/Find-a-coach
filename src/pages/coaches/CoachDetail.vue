@@ -1,7 +1,7 @@
 <template>
   <app-card>
     <div>
-      <h1 class="mb-3 mt-3 text-xl md:text-2xl xl:text-4xl">{{ fullName }}</h1>
+      <h2 class="headline mt-3">{{ fullName }}</h2>
       <p class="mb-4 md:text-xl">
         <strong>${{ hourlyRate }}/h</strong>
       </p>

@@ -65,6 +65,7 @@ const onFormSubmit = () => {
     message: message.value,
     id: newId(),
     coachId: route.params.id,
+    answear: null,
   };
 
   requestsStore.addNewRequest(request);

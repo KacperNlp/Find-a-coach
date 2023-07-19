@@ -43,6 +43,11 @@ export const useCoachesStore = defineStore("coaches", () => {
     return filteredCoaches;
   });
   const isLogin = computed(() => !!userId.value);
+  const getLoggedUserName = computed(() => {
+    const loggedUser = coaches.value.find((coach) => coach.id === userId.value);
+
+    return loggedUser.firstName;
+  });
   const getFilters = computed(() => filters.value);
 
   function updateFilters(updatedFilters) {
@@ -80,6 +85,7 @@ export const useCoachesStore = defineStore("coaches", () => {
     filters,
     getCoaches,
     isLogin,
+    getLoggedUserName,
     getFilters,
     updateFilters,
     createNewCoach,

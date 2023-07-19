@@ -25,7 +25,7 @@
           >
         </div>
       </div>
-      <ul v-if="hasCoaches" class="grid gap-8">
+      <ul v-if="hasCoaches" class="list-grid">
         <app-coach-item
           v-for="coach in coachesList"
           :key="coach.id"

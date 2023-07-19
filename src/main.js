@@ -8,6 +8,7 @@ import AppButton from "./components/UI/AppButton.vue";
 import AppCard from "./components/UI/AppCard.vue";
 import AppContainer from "./components/UI/AppContainer.vue";
 import AppFormValidation from "./components/UI/AppFormValidation.vue";
+import AppMessagePart from "./components/UI/AppMessagePart.vue";
 
 import "./style.css";
 import App from "./App.vue";
@@ -20,7 +21,8 @@ app
   .component("AppButton", AppButton)
   .component("AppCard", AppCard)
   .component("AppContainer", AppContainer)
-  .component("AppFormValidation", AppFormValidation);
+  .component("AppFormValidation", AppFormValidation)
+  .component("AppMessagePart", AppMessagePart);
 
 app.use(pinia);
 app.use(router);
