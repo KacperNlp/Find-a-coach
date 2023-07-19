@@ -11,7 +11,7 @@
               >All coaches</router-link
             >
           </li>
-          <li v-if="true" class="nav-link">
+          <li v-if="isLoginOrRegistered" class="nav-link">
             <router-link to="/requests" class="link-hover"
               >Requests</router-link
             >
@@ -21,6 +21,15 @@
     </app-container>
   </header>
 </template>
+
+<script setup>
+import { computed } from "vue";
+import { useCoachesStore } from "../store/coaches/index.js";
+
+const coaches = useCoachesStore();
+
+const isLoginOrRegistered = computed(() => coaches.isLogin);
+</script>
 
 <style scoped>
 .router-link-active {

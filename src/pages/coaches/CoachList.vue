@@ -10,15 +10,18 @@
         <app-button type="btn-outline">Refresh</app-button>
         <div>
           <app-button
-            v-if="true"
+            v-if="isNotLoginOrRegistered"
             is-link
             to="/login"
             type="btn-outline"
             class="mr-2"
             >Login as Coach</app-button
           >
-          <app-button v-if="true" is-link to="/register"
+          <app-button v-if="isNotLoginOrRegistered" is-link to="/register"
             >Register as Coach</app-button
+          >
+          <app-button v-if="isLoginOrRegistered" @click="logoutUser"
+            >Logout</app-button
           >
         </div>
       </div>
@@ -42,8 +45,8 @@
 </template>
 
 <script setup>
-import { useCoachesStore } from "../../store/coaches/index";
 import { computed } from "vue";
+import { useCoachesStore } from "../../store/coaches/index";
 
 //components
 import AppCoachFilter from "../../components/coaches/AppCoachFilter.vue";
@@ -52,7 +55,11 @@ import AppCoachItem from "../../components/coaches/AppCoachItem.vue";
 const coaches = useCoachesStore();
 
 const hasCoaches = computed(() => coaches.getCoaches.length > 0);
-const coachesList = computed(() => {
-  return coaches.getCoaches;
-});
+const coachesList = computed(() => coaches.getCoaches);
+const isLoginOrRegistered = computed(() => coaches.isLogin);
+const isNotLoginOrRegistered = computed(() => !coaches.isLogin);
+
+const logoutUser = () => {
+  coaches.logoutUser();
+};
 </script>

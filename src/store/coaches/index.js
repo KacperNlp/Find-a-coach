@@ -42,6 +42,7 @@ export const useCoachesStore = defineStore("coaches", () => {
 
     return filteredCoaches;
   });
+  const isLogin = computed(() => !!userId.value);
   const getFilters = computed(() => filters.value);
 
   function updateFilters(updatedFilters) {
@@ -50,16 +51,25 @@ export const useCoachesStore = defineStore("coaches", () => {
 
   function createNewCoach(coach) {
     const newArrayWithCoaches = [...coaches.value];
+
+    userId.value = coach.id;
     newArrayWithCoaches.push(coach);
     coaches.value = newArrayWithCoaches;
   }
 
+  function logoutUser() {
+    userId.value = null;
+  }
+
   return {
     coaches,
+    userId,
     filters,
     getCoaches,
+    isLogin,
     getFilters,
     updateFilters,
     createNewCoach,
+    logoutUser,
   };
 });
