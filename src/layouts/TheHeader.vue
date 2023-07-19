@@ -11,7 +11,7 @@
               >All coaches</router-link
             >
           </li>
-          <li class="nav-link">
+          <li v-if="true" class="nav-link">
             <router-link to="/requests" class="link-hover"
               >Requests</router-link
             >

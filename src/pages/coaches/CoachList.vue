@@ -10,14 +10,14 @@
         <app-button type="btn-outline">Refresh</app-button>
         <div>
           <app-button
-            v-if="!isRegisteredAsCoach"
+            v-if="true"
             is-link
             to="/login"
             type="btn-outline"
             class="mr-2"
             >Login as Coach</app-button
           >
-          <app-button v-if="!isRegisteredAsCoach" is-link to="/register"
+          <app-button v-if="true" is-link to="/register"
             >Register as Coach</app-button
           >
         </div>
@@ -55,5 +55,4 @@ const hasCoaches = computed(() => coaches.getCoaches.length > 0);
 const coachesList = computed(() => {
   return coaches.getCoaches;
 });
-const isRegisteredAsCoach = computed(() => coaches.isRegisteredAsCoach);
 </script>
